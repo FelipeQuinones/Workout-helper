@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import time
 
-def pathTime():
+def dfPath():
     localtime = time.localtime()
     df_name = "{hour};{minute};{second}-{day}D-{month}M-{year}Y".format(hour=localtime[3], 
     minute=localtime[4], second=localtime[5], day=localtime[2], month=localtime[1], year=localtime[0])
@@ -13,10 +13,14 @@ def createDf(weight1_name="Pesa 1", weight2_name="Pesa 2"):
     df = pd.DataFrame(columns=columns)
     return df
 
+def addRow(df, peso1, peso2):
+    row = pd.DataFrame([[peso1, peso2]],columns=["Pesa 1", "Pesa 2"])
+    df = pd.concat([df, row], ignore_index=True)    
+
 """df1 = createDf()
 
 for i in range(6):
-    row = {"Peso 1":i, "Peso 2":i}
-    df1 = df1.append(row, ignore_index=True)
+    row = pd.DataFrame([[5, 5]],columns=["Pesa 1", "Pesa 2"])
+    df1 = pd.concat([df1, row], ignore_index=True)
 
-df1.to_csv(pathTime())"""
+df1.to_csv(dfPath())"""
