@@ -1,39 +1,27 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import time
 import numpy as np
 
 def plot_record(x=0, y=0):
     plt.ion()
-    # here we are creating sub plots
-    figure, ax = plt.subplots(figsize=(10, 8))
+    figure, ax = plt.subplots(figsize=(5, 5))
     line1, = ax.plot(x, y)
  
-# setting title
-    plt.title("Geeks For Geeks", fontsize=20)
+    plt.title("Bar movement", fontsize=10)
+    plt.ylabel("Pixel trajectory")
  
-# setting x-axis label and y-axis label
-    plt.xlabel("X-axis")
-    plt.ylabel("Y-axis")
- 
-# Loop
-    for _ in range(50):
-    # creating new Y values
-        new_y = np.sin(x-0.5*_)
- 
-    # updating data values
+    for i in range(50):
+        min_val = i
+        max_val = 50+i
+        new_y = range(min_val,max_val)
         line1.set_xdata(x)
         line1.set_ydata(new_y)
- 
-    # drawing updated values
+        ax.set_xlim(min_val,max_val)
         figure.canvas.draw()
- 
-    # This will run the GUI event
-    # loop until all UI events
-    # currently waiting have been processed
         figure.canvas.flush_events()
  
         time.sleep(0.1)
 
-X = np.linspace(0, 10, 100)
-Y = np.sin(X)
-plot_record(x=X, y=Y)
+"""X = np.linspace(0,10,50)
+Y = range(0,50)
+plot_record(x=X,y=Y)"""
