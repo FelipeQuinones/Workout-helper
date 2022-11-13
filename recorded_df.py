@@ -13,14 +13,13 @@ def createDf(weight1_name="Pesa 1", weight2_name="Pesa 2"):
     df = pd.DataFrame(columns=columns)
     return df
 
-def addRow(df, peso1, peso2):
+def addRow(df, peso1=0, peso2=0):
     row = pd.DataFrame([[peso1, peso2]],columns=["Pesa 1", "Pesa 2"])
-    df = pd.concat([df, row], ignore_index=True)    
+    df = pd.concat([df, row], ignore_index=True)
+    return df  
 
 """df1 = createDf()
-
 for i in range(6):
-    row = pd.DataFrame([[5, 5]],columns=["Pesa 1", "Pesa 2"])
-    df1 = pd.concat([df1, row], ignore_index=True)
+    df1 = addRow(df1, 5, 5)
 
 df1.to_csv(dfPath())"""

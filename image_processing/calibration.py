@@ -13,7 +13,7 @@ cv2.createTrackbar("US", "Tracking", 255, 255, nothing)
 cv2.createTrackbar("UV", "Tracking", 255, 255, nothing)
 
 while True:
-    fr = cv2.imread('Images/pesas2_downsized.jpg')
+    fr = cv2.imread('image_processing/Images/pesas2_downsized.jpg')
     frame = cv2.bitwise_not(fr)
 
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
