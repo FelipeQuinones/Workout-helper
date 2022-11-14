@@ -30,7 +30,7 @@ while(cap_.isOpened()):
         contours, _ = cv2.findContours(th1, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 
         for contour in contours:
-            if cv2.contourArea(contour) < 1000 and cv2.contourArea(contour) > 100:
+            if cv2.contourArea(contour) < 1000 and cv2.contourArea(contour) > 800:
                 approx = cv2.approxPolyDP(contour, 0.01* cv2.arcLength(contour, True), True)
                 cv2.drawContours(frame1, [approx], 0, (0, 0, 0), 5)
                 x = approx.ravel()[0]
@@ -64,7 +64,7 @@ while(cap_.isOpened()):
     else:
         break
 
-    
+    df_ = rdf.addRow(df_, contour[0][0][0], contour[0][0][1])
 
 cap_.release()
 cv2.destroyAllWindows()
