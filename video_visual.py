@@ -11,6 +11,9 @@ cap_ = createCamera()
 L_B = np.array([165, 156, 163])
 U_B = np.array([255, 255, 255])
 
+"""L_B = np.array([130, 123, 76])
+U_B = np.array([255, 255, 255])"""
+
 while(cap_.isOpened()):
     ret, frame = cap_.read()
 
@@ -22,7 +25,7 @@ while(cap_.isOpened()):
         contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 
         for contour in contours:
-            if cv2.contourArea(contour) < 1000000 and cv2.contourArea(contour) > 500:
+            if cv2.contourArea(contour) < 10000000:
                 approx = cv2.approxPolyDP(contour, 0.01* cv2.arcLength(contour, True), True)
                 cv2.drawContours(frame, [approx], 0, (0, 0, 0), 5)
                 x = approx.ravel()[0]
